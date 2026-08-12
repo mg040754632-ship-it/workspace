@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#ff4d6d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>穿搭工作台</title>
+  <link rel="manifest" href="./public/manifest.json" />
+  <link rel="apple-touch-icon" href="./public/icon-192.png" />
+  <link rel="icon" href="./public/icon-192.png" />
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- 顶部状态栏占位 -->
+    <header class="app-header">
+      <h1 class="app-title" id="pageTitle">首页</h1>
+    </header>
+
+    <!-- 页面容器 -->
+    <main class="page-container" id="pageContainer"></main>
+
+    <!-- 底部 Tab 导航 -->
+    <nav class="tab-bar" id="tabBar">
+      <button class="tab-item active" data-tab="home">
+        <span class="tab-icon" aria-hidden="true">🏠</span>
+        <span class="tab-label">首页</span>
+      </button>
+      <button class="tab-item" data-tab="plans">
+        <span class="tab-icon" aria-hidden="true">👗</span>
+        <span class="tab-label">穿搭方案</span>
+      </button>
+      <button class="tab-item" data-tab="profile">
+        <span class="tab-icon" aria-hidden="true">👤</span>
+        <span class="tab-label">个人主页</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 通用弹层容器 -->
+  <div id="modalRoot"></div>
+
+  <!-- 安装引导横幅 -->
+  <div id="installBanner" class="install-banner hidden">
+    <span class="ib-icon">📲</span>
+    <span class="ib-text">把穿搭工作台添加到主屏，随时打开</span>
+    <button id="installBtn" class="ib-btn">安装</button>
+    <button id="installClose" class="ib-close">✕</button>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./public/sw.js').catch(()=>{});
+      });
+    }
+  </script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# Netlify 部署配置（纯静态站点）
+[build]
+  publish = "."          # 项目根目录即为站点根
+  command = ""           # 无需构建
+
+# SPA / 路由回退（本应用为单页，所有路径都回 index.html）
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# 缓存策略：静态资源长缓存，html/sw 不缓存
+[[headers]]
+  for = "/public/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
