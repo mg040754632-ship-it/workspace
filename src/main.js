@@ -1,4 +1,3 @@
-import { renderHome } from './pages/home.js';
 import { renderPlans, renderSeasonList } from './pages/plans.js';
 import { renderProfile } from './pages/profile.js';
 import { openMatchPage } from './pages/match.js';
@@ -7,9 +6,9 @@ const pageContainer = document.getElementById('pageContainer');
 const pageTitle = document.getElementById('pageTitle');
 const tabBar = document.getElementById('tabBar');
 
-const TITLES = { home: '首页', plans: '穿搭方案', profile: '个人主页' };
+const TITLES = { plans: '穿搭方案', profile: '个人主页' };
 
-let currentTab = 'home';
+let currentTab = 'plans';
 let view = 'main'; // main | season
 
 async function showTab(tab) {
@@ -19,8 +18,7 @@ async function showTab(tab) {
   tabBar.style.display = 'flex';
   setActiveTab(tab);
   pageContainer.scrollTop = 0;
-  if (tab === 'home') await renderHome(pageContainer);
-  else if (tab === 'plans') await renderPlans(pageContainer, { goSeason: showSeason });
+  if (tab === 'plans') await renderPlans(pageContainer, { goSeason: showSeason });
   else if (tab === 'profile') await renderProfile(pageContainer, { openMatch: openMatch });
 }
 
@@ -51,8 +49,8 @@ tabBar.querySelectorAll('.tab-item').forEach(btn => {
   btn.addEventListener('click', () => showTab(btn.dataset.tab));
 });
 
-// 启动
-showTab('home');
+// 启动（默认进入穿搭方案）
+showTab('plans');
 
 // ===== PWA 安装引导 =====
 let deferredPrompt = null;
@@ -61,10 +59,8 @@ const installBtn = document.getElementById('installBtn');
 const installClose = document.getElementById('installClose');
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // 阻止默认迷你信息条，使用我们自己的横幅
   e.preventDefault();
   deferredPrompt = e;
-  // 仅在未.dismiss过且支持安装时显示
   const dismissed = localStorage.getItem('install_dismissed');
   if (!dismissed) installBanner.classList.remove('hidden');
 });
@@ -82,8 +78,6 @@ installClose?.addEventListener('click', () => {
   localStorage.setItem('install_dismissed', '1');
 });
 
-// iOS 无 beforeinstallprompt，给出手动提示（已通过 apple-touch-icon 支持）
 if (!window.matchMedia('(display-mode: standalone)').matches && /iPhone|iPad|iPod/.test(navigator.userAgent)) {
   if (!localStorage.getItem('install_dismissed')) installBanner.classList.remove('hidden');
 }
-
