@@ -5,20 +5,20 @@ export async function renderPlans(container, { goSeason } = {}) {
   container.innerHTML = `
     <div class="plans-page">
       <div style="display:flex;align-items:center;justify-content:space-between;margin:2px 2px 10px">
-        <span class="dessert-tag">🍰 我的衣橱日记</span>
-        <span style="font-size:12px;color:var(--text-soft)">🎀 Hello Kitty</span>
+        <span class="dessert-tag">★ 我的衣橱日记</span>
+        <span class="dessert-tag pink">Hello Kitty</span>
       </div>
       <div class="section-label">最常穿的穿搭</div>
       <div class="fav-box" id="favBox">
-        <div class="fav-empty" id="favEmpty"><div class="big">👗</div>还没有最常穿的穿搭<br/>去「个人主页→搭配衣物」创建吧</div>
+        <div class="fav-empty" id="favEmpty"><div class="big icon-dress"></div>还没有最常穿的穿搭<br/>去「个人主页→搭配衣物」创建吧</div>
       </div>
 
       <div class="section-label">四季穿搭</div>
       <div class="season-grid">
         ${SEASONS.map(s => `
           <div class="season-box ${s.cls}" data-season="${s.id}">
-            <div class="season-bg">${s.icon}</div>
-            <div class="season-name">${s.name}</div>
+            <div class="season-deco">${s.name}</div>
+            <div class="season-name">${s.label}</div>
             <div class="season-count" data-count="${s.id}">0 套</div>
           </div>
         `).join('')}
@@ -74,19 +74,19 @@ export async function renderSeasonList(container, seasonId, { goBack, onOpenOutf
   container.innerHTML = `
     <div class="app-header" style="position:sticky">
       <button class="match-close" id="backBtn" style="position:static;transform:none;margin-right:10px">‹</button>
-      <h1 class="app-title">${season.name}季穿搭</h1>
+      <h1 class="app-title">${season.label}季穿搭</h1>
     </div>
     <div class="season-list" id="seasonList"></div>
   `;
   const list = container.querySelector('#seasonList');
   const items = await getOutfitsBySeason(seasonId);
   if (!items.length) {
-    list.innerHTML = `<div class="empty-tip">还没有${season.name}季穿搭<br/>去「个人主页→搭配衣物」添加吧</div>`;
+    list.innerHTML = `<div class="empty-tip">还没有${season.label}季穿搭<br/>去「个人主页→搭配衣物」添加吧</div>`;
   } else {
     list.innerHTML = items.map(o => `
       <div class="plan-card" data-id="${o.id}">
         <img src="${o.dataUrl}" alt="" />
-        <div class="pc-body">${escapeHtml(o.title || (season.name+'季穿搭'))} · ♥${(o.useCount||0)}</div>
+        <div class="pc-body">${escapeHtml(o.title || (season.label+'季穿搭'))} · ♥${(o.useCount||0)}</div>
       </div>
     `).join('');
     list.querySelectorAll('.plan-card').forEach(el => {

@@ -73,6 +73,24 @@ html, body {
   display:inline-flex; align-items:center; gap:4px;
   background: var(--primary-soft); color: var(--primary-deep);
   font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight:700;
+  border: 1px solid #e8d3b0;
+}
+.dessert-tag.pink { background:#ffe0ea; color:var(--accent); border-color:#ffc4d6; }
+
+.icon-dress {
+  width: 56px; height: 56px; margin: 0 auto 8px;
+  background:
+    radial-gradient(circle at 50% 22%, var(--accent) 0 8px, transparent 9px),
+    linear-gradient(180deg, transparent 38%, var(--primary-soft) 38%);
+  border-radius: 28px 28px 50% 50%;
+  border: 2px dashed var(--primary);
+  position: relative;
+}
+.icon-dress::after {
+  content:''; position:absolute; top:18px; left:50%; transform:translateX(-50%);
+  width: 30px; height: 38px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
 }
 
 .app-header {
@@ -228,8 +246,13 @@ html, body {
   cursor: pointer;
   display:flex; align-items:center; justify-content:center;
 }
-.season-box .season-name { font-size: 16px; font-weight: 700; z-index:2; }
+.season-box .season-name { font-size: 18px; font-weight: 800; z-index:2; color: var(--primary-deep); letter-spacing: 1px; }
 .season-box .season-bg { position:absolute; inset:0; opacity:.18; font-size:90px; display:flex; align-items:center; justify-content:center; }
+.season-box .season-deco {
+  position:absolute; top: 50%; left: 50%; transform: translate(-50%, -90%);
+  font-size: 64px; font-weight: 900; color: var(--primary);
+  opacity: 0.18; font-family: "Georgia", serif; pointer-events:none;
+}
 .season-spring { background: linear-gradient(135deg,#eef6e3,#fdf6ec); }
 .season-summer { background: linear-gradient(135deg,#e3f0f6,#fdf6ec); }
 .season-autumn { background: linear-gradient(135deg,#f6e6cf,#fdf6ec); }
@@ -248,7 +271,16 @@ html, body {
 /* ===== 个人主页 ===== */
 .profile-page { padding: 14px; }
 .profile-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
-.profile-avatar { width:54px;height:54px;border-radius:50%; background:var(--primary-soft); display:flex;align-items:center;justify-content:center;font-size:26px; }
+.profile-avatar { width:54px;height:54px;border-radius:50%; background:linear-gradient(135deg,#fff,#f6e2cf); display:flex;align-items:center;justify-content:center; position:relative; border:2px solid #e8d3b0; }
+.profile-avatar .pa-bow {
+  display:block; width:30px; height:22px; position:relative;
+}
+.profile-avatar .pa-bow::before, .profile-avatar .pa-bow::after {
+  content:''; position:absolute; top:0; width:14px; height:22px; background:var(--accent); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+.profile-avatar .pa-bow::before { left:0; transform:rotate(-15deg); }
+.profile-avatar .pa-bow::after  { right:0; transform:rotate(15deg); }
+.profile-avatar .pa-bow::marker { content:''; }
 .profile-name { font-size:17px; font-weight:700; }
 .profile-sub { font-size:12px; color:var(--text-soft); }
 
@@ -268,6 +300,30 @@ html, body {
 .action-box .ab-desc { font-size:11px; color:var(--text-soft); }
 .action-upload { background: linear-gradient(135deg,#fdf6ec,#f6e2cf); }
 .action-match { background: linear-gradient(135deg,#fdf6ec,#ecdcc4); }
+
+/* action-box 内 icon（CSS 绘制，免 emoji 字体）*/
+.action-box .icon-up {
+  width: 48px; height: 48px; border-radius: 12px;
+  border: 2.5px solid var(--primary); position: relative; background:#fff;
+}
+.action-box .icon-up::before {
+  content:''; position:absolute; left:50%; top:14px; transform:translateX(-50%);
+  border-left: 11px solid transparent; border-right: 11px solid transparent;
+  border-bottom: 16px solid var(--primary);
+}
+.action-box .icon-up::after {
+  content:''; position:absolute; left:50%; bottom:8px; transform:translateX(-50%);
+  width: 20px; height: 4px; background: var(--primary); border-radius: 2px;
+}
+.action-box .icon-match {
+  width: 48px; height: 48px;
+  display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:4px;
+}
+.action-box .icon-match span { background: var(--primary); border-radius: 7px; }
+.action-box .icon-match span:nth-child(1){background:var(--primary-deep)}
+.action-box .icon-match span:nth-child(2){background:var(--primary)}
+.action-box .icon-match span:nth-child(3){background:var(--accent)}
+.action-box .icon-match span:nth-child(4){background:var(--primary)}
 
 .wardrobe-stats { margin-top:18px; }
 .wardrobe-stats .section-label { margin-bottom:8px; }
@@ -308,7 +364,7 @@ html, body {
   border:1px solid transparent;
 }
 .cat-cell.sel { border-color:var(--primary); background:var(--primary-soft); }
-.cat-cell .cc-icon { font-size:26px; display:block; }
+.cat-cell .cc-icon { font-size:26px; display:block; color: var(--primary-deep); font-weight: 700; }
 .cat-cell .cc-name { font-size:12px; margin-top:4px; }
 
 .btn {
