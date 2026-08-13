@@ -1,17 +1,17 @@
 // 11 个服饰分类（图标 + 文字，自上而下）
 // 用基础 Unicode 符号代替 emoji，确保所有设备都能正常显示
 export const CATEGORIES = [
-  { id: 'top',      name: '上衣',   icon: '◆' },
-  { id: 'coat',     name: '外套',   icon: '◇' },
-  { id: 'pants',    name: '裤子',   icon: '□' },
-  { id: 'skirt',    name: '裙子',   icon: '▽' },
-  { id: 'belt',     name: '腰带',   icon: '◐' },
-  { id: 'necklace', name: '项链',   icon: '○' },
-  { id: 'earring',  name: '耳环',   icon: '●' },
-  { id: 'bracelet', name: '手链',   icon: '◑' },
-  { id: 'ring',     name: '戒指',   icon: '◎' },
-  { id: 'headwear', name: '头饰',   icon: '☆' },
-  { id: 'other',    name: '其他',   icon: '✦' },
+  { id: 'top',      name: '上衣',   icon: '👚' },
+  { id: 'coat',     name: '外套',   icon: '🧥' },
+  { id: 'pants',    name: '裤子',   icon: '👖' },
+  { id: 'skirt',    name: '裙子',   icon: '👗' },
+  { id: 'belt',     name: '腰带',   icon: '🪢' },
+  { id: 'necklace', name: '项链',   icon: '📿' },
+  { id: 'earring',  name: '耳环',   icon: '💎' },
+  { id: 'bracelet', name: '手链',   icon: '⌚' },
+  { id: 'ring',     name: '戒指',   icon: '💍' },
+  { id: 'headwear', name: '头饰',   icon: '🎀' },
+  { id: 'other',    name: '其他',   icon: '🧷' },
 ];
 
 export function catById(id) { return CATEGORIES.find(c => c.id === id); }

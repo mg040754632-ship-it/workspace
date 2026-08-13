@@ -8,15 +8,7 @@ export async function renderProfile(container, { openMatch } = {}) {
   container.innerHTML = `
     <div class="profile-page">
       <div class="profile-head">
-        <div class="profile-avatar kitty-logo">
-          <span class="ear l"></span><span class="ear r"></span>
-          <span class="head"></span>
-          <span class="eye l"></span><span class="eye r"></span>
-          <span class="nose"></span>
-          <span class="whisker l1"></span><span class="whisker l2"></span><span class="whisker l3"></span>
-          <span class="whisker r1"></span><span class="whisker r2"></span><span class="whisker r3"></span>
-          <span class="bow"><span class="knot"></span></span>
-        </div>
+        <div class="profile-avatar">👤</div>
         <div>
           <div class="profile-name">衣橱</div>
           <div class="profile-sub" id="wardrobeSub">共 0 件单品</div>
@@ -25,12 +17,12 @@ export async function renderProfile(container, { openMatch } = {}) {
 
       <div class="action-grid">
         <div class="action-box action-upload" id="actUpload">
-          <div class="ab-icon icon-up"></div>
+          <div class="ab-icon">📤</div>
           <div class="ab-name">上传衣物</div>
           <div class="ab-desc">拍照/选图 · AI 抠白底</div>
         </div>
         <div class="action-box action-match" id="actMatch">
-          <div class="ab-icon icon-match"><span></span><span></span><span></span><span></span></div>
+          <div class="ab-icon">🧩</div>
           <div class="ab-name">搭配衣物</div>
           <div class="ab-desc">拖拽拼搭 · 存四季</div>
         </div>

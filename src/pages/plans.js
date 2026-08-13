@@ -4,30 +4,19 @@ import { SEASONS } from '../lib/categories.js';
 export async function renderPlans(container, { goSeason } = {}) {
   container.innerHTML = `
     <div class="plans-page">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin:2px 2px 10px">
-        <span class="dessert-tag">★ 我的衣橱日记</span>
-        <span class="dessert-tag pink">Hello Kitty</span>
-      </div>
-      <div class="section-label" style="display:flex;align-items:center;gap:8px">最常穿的穿搭 <span class="cupcake"></span></div>
+      <div class="section-label">最常穿的穿搭</div>
       <div class="fav-box" id="favBox">
-        <div class="fav-empty" id="favEmpty"><div class="big icon-dress"></div>还没有最常穿的穿搭<br/>去「个人主页→搭配衣物」创建吧</div>
+        <div class="fav-empty" id="favEmpty"><div class="big">👗</div>还没有最常穿的穿搭<br/>去「个人主页→搭配衣物」创建吧</div>
       </div>
 
-      <div class="section-label" style="display:flex;align-items:center;gap:8px">四季穿搭 <span class="wheat"></span></div>
+      <div class="section-label">四季穿搭</div>
       <div class="season-grid">
         ${SEASONS.map(s => `
           <div class="season-box ${s.cls}" data-season="${s.id}">
-            <div class="season-deco">${s.name}</div>
             <div class="season-name">${s.label}</div>
             <div class="season-count" data-count="${s.id}">0 套</div>
           </div>
         `).join('')}
-      </div>
-      <div style="display:flex;gap:14px;justify-content:center;margin-top:18px;padding:10px 0;">
-        <span class="bread-loaf"></span>
-        <span class="bread-toast"></span>
-        <span class="egg-tart"></span>
-        <span class="cupcake"></span>
       </div>
     </div>
   `;
