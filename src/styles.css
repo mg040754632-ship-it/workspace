@@ -5,7 +5,10 @@
   --primary: #c9a87c;
   --primary-deep: #a9744f;
   --primary-soft: #efe1cb;
-  --accent: #ff9eb5;
+  --accent: #e23b3b;
+  --accent-soft: #ffd0d0;
+  --crust: #e9b56d;
+  --crust-deep: #b07a3e;
   --text: #6b5640;
   --text-soft: #a08a6e;
   --line: #e2d2b6;
@@ -42,31 +45,59 @@ html, body {
   box-shadow: 0 0 40px rgba(169,116,79,0.12);
 }
 
-/* ===== Hello Kitty 装饰：奶油棕小猫头 + 蝴蝶结（莫奈柔边）===== */
+/* ===== Hello Kitty 头部 logo（标准圆润白猫头 + 红蝴蝶结）===== */
 .kitty-logo {
-  width: 34px; height: 34px; position: relative; flex-shrink: 0; margin-right: 10px;
+  width: 44px; height: 40px; position: relative; flex-shrink: 0; margin-right: 10px;
 }
+/* 头部主体：更大、更圆润 */
 .kitty-logo .head {
-  position:absolute; left:3px; top:5px; width:28px; height:24px;
-  background:#fffdf8; border:2px solid #e6cdb0; border-radius:50% 50% 48% 48%;
+  position:absolute; left:4px; top:6px; width:36px; height:32px;
+  background:#ffffff; border-radius:50% 50% 48% 48% / 55% 55% 45% 45%;
 }
-.kitty-logo .ear { position:absolute; top:0; width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-bottom:11px solid #fffdf8; }
-.kitty-logo .ear.l { left:4px; transform:rotate(-18deg); }
-.kitty-logo .ear.r { right:4px; transform:rotate(18deg); }
-.kitty-logo .eye { position:absolute; top:13px; width:3px; height:3px; background:#6b5640; border-radius:50%; }
-.kitty-logo .eye.l { left:11px; } .kitty-logo .eye.r { right:11px; }
-.kitty-logo .nose { position:absolute; top:17px; left:50%; transform:translateX(-50%); width:4px; height:3px; background:#ff9eb5; border-radius:50%; }
-.kitty-logo .whisker { position:absolute; top:16px; width:9px; height:1.5px; background:#d9b894; }
-.kitty-logo .whisker.l1 { left:-4px; transform:rotate(8deg);} .kitty-logo .whisker.l2 { left:-4px; top:19px; transform:rotate(-8deg);}
-.kitty-logo .whisker.r1 { right:-4px; transform:rotate(-8deg);} .kitty-logo .whisker.r2 { right:-4px; top:19px; transform:rotate(8deg);}
-.kitty-logo .bow { position:absolute; top:-2px; left:50%; transform:translateX(-50%); width:16px; height:11px; }
+/* 三角耳朵（白） */
+.kitty-logo .ear {
+  position:absolute; top:2px; width:0; height:0;
+  border-left:8px solid transparent; border-right:8px solid transparent;
+  border-bottom:14px solid #ffffff;
+}
+.kitty-logo .ear.l { left:5px; transform:rotate(-25deg); }
+.kitty-logo .ear.r { right:5px; transform:rotate(25deg); }
+/* 椭圆眼睛 */
+.kitty-logo .eye {
+  position:absolute; top:19px; width:4.5px; height:6px; background:#3a2e22; border-radius:50%;
+}
+.kitty-logo .eye.l { left:13px; }
+.kitty-logo .eye.r { right:13px; }
+/* 黄鼻子 */
+.kitty-logo .nose {
+  position:absolute; top:25px; left:50%; transform:translateX(-50%);
+  width:5px; height:4px; background:#f5c842; border-radius:50%;
+}
+/* 六根胡须（三对） */
+.kitty-logo .whisker {
+  position:absolute; width:11px; height:1.5px; background:#3a2e22; border-radius:1px;
+}
+.kitty-logo .whisker.l1 { left:-7px; top:24px; transform:rotate(10deg);}
+.kitty-logo .whisker.l2 { left:-8px; top:27px; transform:rotate(0deg);}
+.kitty-logo .whisker.l3 { left:-7px; top:30px; transform:rotate(-10deg);}
+.kitty-logo .whisker.r1 { right:-7px; top:24px; transform:rotate(-10deg);}
+.kitty-logo .whisker.r2 { right:-8px; top:27px; transform:rotate(0deg);}
+.kitty-logo .whisker.r3 { right:-7px; top:30px; transform:rotate(10deg);}
+/* 经典红色蝴蝶结（耳朵右上） */
+.kitty-logo .bow {
+  position:absolute; top:-4px; right:0; width:18px; height:14px;
+}
 .kitty-logo .bow::before, .kitty-logo .bow::after {
-  content:''; position:absolute; top:0; width:0; height:0;
-  border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:7px solid var(--accent);
+  content:''; position:absolute; top:0; width:11px; height:14px;
+  background: var(--accent);
+  border-radius: 60% 40% 60% 40% / 70% 30% 70% 30%;
 }
-.kitty-logo .bow::before { left:0; }
-.kitty-logo .bow::after { right:0; transform:scaleX(-1); }
-.kitty-logo .bow .knot { position:absolute; left:50%; top:1px; transform:translateX(-50%); width:4px; height:4px; background:var(--accent); border-radius:50%; }
+.kitty-logo .bow::before { left:0; transform:rotate(-15deg); }
+.kitty-logo .bow::after  { right:-2px; transform:rotate(15deg); }
+.kitty-logo .bow .knot {
+  position:absolute; left:50%; top:3px; transform:translateX(-50%);
+  width:6px; height:6px; background: var(--accent); border-radius:50%;
+}
 
 /* 甜点装饰小标 */
 .dessert-tag {
@@ -91,6 +122,85 @@ html, body {
   width: 30px; height: 38px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
   clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+}
+
+/* ===== 面包/蛋挞/麦穗小图标（CSS 绘制）===== */
+/* 餐包（椭圆+小切口） */
+.bread-loaf {
+  display:inline-block; width:36px; height:24px; position:relative;
+  background: var(--crust);
+  border: 1.5px solid var(--crust-deep);
+  border-radius: 50% 50% 48% 48% / 60% 60% 40% 40%;
+}
+.bread-loaf::before, .bread-loaf::after {
+  content:''; position:absolute; top:6px; width:2px; height:10px;
+  background: var(--crust-deep); border-radius:1px; transform:rotate(15deg);
+}
+.bread-loaf::before { left:11px; }
+.bread-loaf::after  { right:11px; transform:rotate(-15deg);}
+
+/* 吐司方块 */
+.bread-toast {
+  display:inline-block; width:32px; height:28px; position:relative;
+  background: var(--crust);
+  border: 1.5px solid var(--crust-deep);
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 0 0 0 3px #f5d99c;
+}
+.bread-toast::before {
+  content:''; position:absolute; top:5px; left:50%; transform:translateX(-50%);
+  width:16px; height:2px; background: var(--crust-deep); border-radius:1px;
+}
+
+/* 麦穗 */
+.wheat {
+  display:inline-block; width:18px; height:36px; position:relative;
+}
+.wheat::before {
+  content:''; position:absolute; left:50%; top:0; transform:translateX(-50%);
+  width:1.5px; height:36px; background: var(--crust-deep);
+}
+.wheat span {
+  position:absolute; width:8px; height:5px; background: var(--crust); border:1px solid var(--crust-deep);
+  border-radius: 60% 40% 60% 40%;
+}
+.wheat span:nth-child(1) { top:2px; left:50%; transform:translateX(-50%) rotate(-20deg);}
+.wheat span:nth-child(2) { top:8px; left:50%; transform:translateX(-50%) rotate(20deg);}
+.wheat span:nth-child(3) { top:14px; left:50%; transform:translateX(-50%) rotate(-20deg);}
+.wheat span:nth-child(4) { top:20px; left:50%; transform:translateX(-50%) rotate(20deg);}
+
+/* 蛋挞（梯形+上沿） */
+.egg-tart {
+  display:inline-block; width:32px; height:26px; position:relative;
+}
+.egg-tart::before {
+  content:''; position:absolute; left:0; right:0; top:0; height:18px;
+  background: linear-gradient(180deg, #f5c87a, #e9b56d);
+  border: 1.5px solid var(--crust-deep);
+  border-radius: 8px 8px 2px 2px;
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+}
+.egg-tart::after {
+  content:''; position:absolute; left:50%; top:3px; transform:translateX(-50%);
+  width:8px; height:8px; border-radius:50%;
+  background: radial-gradient(circle, #fff4d2 0%, #f5c87a 70%);
+  border: 1px solid var(--crust-deep);
+}
+
+/* 纸杯蛋糕 */
+.cupcake {
+  display:inline-block; width:30px; height:34px; position:relative;
+}
+.cupcake::before {
+  content:''; position:absolute; left:0; right:0; bottom:0; height:14px;
+  background: linear-gradient(180deg, var(--crust-deep) 0%, #8b5a2b 100%);
+  clip-path: polygon(15% 0, 85% 0, 95% 100%, 5% 100%);
+}
+.cupcake::after {
+  content:''; position:absolute; left:50%; top:0; transform:translateX(-50%);
+  width:26px; height:20px; border-radius:50% 50% 30% 30% / 60% 60% 40% 40%;
+  background: linear-gradient(180deg, #fff5e1, #f5d99c);
+  border: 1.5px solid var(--crust-deep);
 }
 
 .app-header {
@@ -271,7 +381,14 @@ html, body {
 /* ===== 个人主页 ===== */
 .profile-page { padding: 14px; }
 .profile-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
-.profile-avatar { width:54px;height:54px;border-radius:50%; background:linear-gradient(135deg,#fff,#f6e2cf); display:flex;align-items:center;justify-content:center; position:relative; border:2px solid #e8d3b0; }
+.profile-avatar {
+  width:60px; height:54px; border-radius:14px;
+  background:linear-gradient(135deg, #fff 0%, #f6e2cf 100%);
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+  border:2px solid #e8d3b0;
+  box-shadow: 0 4px 12px rgba(169,116,79,0.12);
+}
 .profile-avatar .pa-bow {
   display:block; width:30px; height:22px; position:relative;
 }

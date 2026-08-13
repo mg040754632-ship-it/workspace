@@ -8,10 +8,18 @@ export async function renderProfile(container, { openMatch } = {}) {
   container.innerHTML = `
     <div class="profile-page">
       <div class="profile-head">
-        <div class="profile-avatar"><span class="pa-bow"></span></div>
+        <div class="profile-avatar">
+          <span class="ear l"></span><span class="ear r"></span>
+          <span class="head"></span>
+          <span class="eye l"></span><span class="eye r"></span>
+          <span class="nose"></span>
+          <span class="whisker l1"></span><span class="whisker l2"></span><span class="whisker l3"></span>
+          <span class="whisker r1"></span><span class="whisker r2"></span><span class="whisker r3"></span>
+          <span class="bow"><span class="knot"></span></span>
+        </div>
         <div>
-          <div class="profile-name">Kitty 的衣橱</div>
-          <div class="profile-sub" id="wardrobeSub">共 0 件甜甜单品 🍰</div>
+          <div class="profile-name">衣橱</div>
+          <div class="profile-sub" id="wardrobeSub">共 0 件单品</div>
         </div>
       </div>
 
