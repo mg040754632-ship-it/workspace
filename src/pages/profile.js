@@ -8,7 +8,7 @@ export async function renderProfile(container, { openMatch } = {}) {
   container.innerHTML = `
     <div class="profile-page">
       <div class="profile-head">
-        <div class="profile-avatar">
+        <div class="profile-avatar kitty-logo">
           <span class="ear l"></span><span class="ear r"></span>
           <span class="head"></span>
           <span class="eye l"></span><span class="eye r"></span>
