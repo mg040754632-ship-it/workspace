@@ -4,6 +4,10 @@ import { SEASONS } from '../lib/categories.js';
 export async function renderPlans(container, { goSeason } = {}) {
   container.innerHTML = `
     <div class="plans-page">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin:2px 2px 10px">
+        <span class="dessert-tag">🍰 我的衣橱日记</span>
+        <span style="font-size:12px;color:var(--text-soft)">🎀 Hello Kitty</span>
+      </div>
       <div class="section-label">最常穿的穿搭</div>
       <div class="fav-box" id="favBox">
         <div class="fav-empty" id="favEmpty"><div class="big">👗</div>还没有最常穿的穿搭<br/>去「个人主页→搭配衣物」创建吧</div>
